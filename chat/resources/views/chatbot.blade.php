@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -28,8 +29,6 @@
             --primary: #581B98;
         }
 
-        /* CHATBOX
-=============== */
         .chatbox {
             position: absolute;
             bottom: 30px;
@@ -160,6 +159,37 @@
             border-bottom-right-radius: 20px;
         }
 
+        #chat {
+            /* border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px; */
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+        }
+
+        #chat-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px;
+            cursor: pointer;
+            width: 95%
+        }
+
+        .chat-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px;
+            cursor: pointer;
+            width: 95%
+        }
+
         .messages__item--operator {
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
@@ -211,8 +241,6 @@
 </head>
 
 <body>
-    <h1>Chatbot</h1>
-    <div></div>
 
     <div class="container">
         <div class="chatbox">
@@ -228,7 +256,7 @@
                     </div>
                 </div>
                 <div class="chatbox__messages">
-                    <div  id="chat"></div>
+                    <div id="chat"></div>
                 </div>
                 <div class="chatbox__footer">
                     <input type="text" placeholder="Write a message...">
@@ -347,86 +375,193 @@
         chatbox.display();
     </script>
 
-
     <script>
-        var selectedCategory = null; // Variable to store the selected category
+        $(document).ready(function() {
+            $('body').on('click', '.category-btn', function() {
+                var category = $(this).data('category');
+                console.log("Category clicked:", category);
+                loadSubCat1(category);
+            });
 
-        function sendMessage(message) {
-            // Display user message
-            displayMessage(message, 'user');
+            $('body').on('click', '.subCat1-btn', function() {
+                var category = $(this).data('category');
+                var subCat1 = $(this).data('subcat1');
+                console.log("SubCat1 clicked:", category, subCat1);
+                loadSubCat2(category, subCat1);
+            });
 
-            // If message is a category, store it and fetch subcategories
-            if (data[message]) {
-                selectedCategory = message; // Store the selected category
-                displaySubcategories(data[message]);
-            } else {
-                // If message is a subcategory, fetch answer
-                fetchAnswer(message);
-            }
-        }
+            $('body').on('click', '.subCat2-btn', function() {
+                var category = $(this).data('category');
+                var subCat1 = $(this).data('subcat1');
+                var subCat2 = $(this).data('subcat2');
+                console.log("SubCat2 clicked:", category, subCat1, subCat2);
+                loadQuestions(category, subCat1, subCat2);
+            });
 
-        function displaySubcategories(subcategories) {
-            // Clear previous messages
-            document.getElementById('chat').innerHTML = '';
+            $('body').on('click', '.question-btn', function() {
+                var category = $(this).data('category');
+                var subCat1 = $(this).data('subcat1');
+                var subCat2 = $(this).data('subcat2');
+                var question = $(this).data('question');
+                console.log("Question clicked:", category, subCat1, subCat2, question);
+                getAnswer(category, subCat1, subCat2, question);
+            });
 
-            // Display subcategories as buttons
-            Object.keys(subcategories).forEach(subcategory => {
-                var button = document.createElement('button');
-                button.innerText = subcategory;
-                button.onclick = function() {
-                    sendMessage(subcategory);
-                };
-                document.getElementById('chat').appendChild(button);
+            // Back button handlers
+            $('body').on('click', '#back-to-categories', function() {
+                console.log("Back to categories clicked");
+                loadCategories();
+            });
+
+            $('body').on('click', '#back-to-subCat1', function() {
+                var category = $(this).data('category');
+                console.log("Back to SubCat1 clicked:", category);
+                loadSubCat1(category);
+            });
+
+            $('body').on('click', '#back-to-subCat2', function() {
+                var category = $(this).data('category');
+                var subCat1 = $(this).data('subcat1');
+                console.log("Back to SubCat2 clicked:", category, subCat1);
+                loadSubCat2(category, subCat1);
+            });
+
+            $('body').on('click', '#back-to-questions', function() {
+                var category = $(this).data('category');
+                var subCat1 = $(this).data('subcat1');
+                var subCat2 = $(this).data('subcat2');
+                console.log("Back to questions clicked:", category, subCat1, subCat2);
+                loadQuestions(category, subCat1, subCat2);
+            });
+
+            $('body').on('click', '#home', function() {
+                console.log("Home clicked");
+                loadCategories();
+            });
+
+            // Load initial categories
+            loadCategories();
+        });
+
+        function loadCategories() {
+            $.ajax({
+                url: '/chatbot',
+                type: 'GET',
+                success: function(response) {
+                    console.log("Categories loaded:", response);
+                    var categoriesHtml =
+                        '@foreach ($categories as $category) <button class="category-btn" id="chat-btn" data-category="{{ $category->Category }}">{{ $category->Category }}</button> @endforeach';
+                    $('#chat').html(categoriesHtml);
+                }
             });
         }
 
-        function fetchAnswer(subcategory) {
-            fetch('/get_answer', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        category: selectedCategory,
-                        subcategory: subcategory
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Display answer
-                    if (data.answer) {
-                        displayMessage(data.answer, 'bot');
+        function loadSubCat1(category) {
+            console.log("Loading subCat1 for:", category);
+            $.ajax({
+                url: '/getSubCat1Options',
+                type: 'GET',
+                data: {
+                    category: category
+                },
+                success: function(response) {
+                    console.log("SubCat1 options loaded:", response);
+                    var subCat1Html = "";
+                    response.options.forEach(function(option) {
+                        subCat1Html += '<button class="subCat1-btn" id="chat-btn" data-category="' +
+                            category +
+                            '" data-subcat1="' + option.SubCat1 + '">' + option.SubCat1 + '</button>';
+                    });
+                    subCat1Html += '<button id="back-to-categories" class="chat-btn">Back</button>';
+                    $('#chat').html(subCat1Html);
+                }
+            });
+        }
+
+        function loadSubCat2(category, subCat1) {
+            console.log("Loading subCat2 for:", category, subCat1);
+            $.ajax({
+                url: '/getSubCat2Options',
+                type: 'GET',
+                data: {
+                    category: category,
+                    subCat1: subCat1
+                },
+                success: function(response) {
+                    console.log("SubCat2 options loaded:", response);
+                    var subCat2Html = "";
+                    response.options.forEach(function(option) {
+                        subCat2Html += '<button class="subCat2-btn" id="chat-btn" data-category="' +
+                            category +
+                            '" data-subcat1="' + subCat1 + '" data-subcat2="' + option.SubCat2 + '">' +
+                            option.SubCat2 + '</button>';
+                    });
+                    subCat2Html += '<button id="back-to-subCat1" class="chat-btn" data-category="' +
+                        category +
+                        '">Back</button>';
+                    $('#chat').html(subCat2Html);
+                }
+            });
+        }
+
+        function loadQuestions(category, subCat1, subCat2) {
+            console.log("Loading questions for:", category, subCat1, subCat2);
+            $.ajax({
+                url: '/getQuestions',
+                type: 'GET',
+                data: {
+                    category: category,
+                    subCat1: subCat1,
+                    subCat2: subCat2
+                },
+                success: function(response) {
+                    console.log("Questions loaded:", response);
+                    var questionsHtml = "";
+                    response.questions.forEach(function(question) {
+                        questionsHtml += '<button class="question-btn" id="chat-btn" data-category="' +
+                            category +
+                            '" data-subcat1="' + subCat1 + '" data-subcat2="' + subCat2 +
+                            '" data-question="' +
+                            question
+                            .Question + '">' + question.Question + '</button>';
+                    });
+                    questionsHtml += '<button id="back-to-subCat2" class="chat-btn" data-category="' +
+                        category +
+                        '" data-subcat1="' + subCat1 + '">Back</button>';
+                    $('#chat').html(questionsHtml);
+                }
+            });
+        }
+
+        function getAnswer(category, subCat1, subCat2, question) {
+            console.log("Getting answer for:", category, subCat1, subCat2, question);
+            $.ajax({
+                url: '/getAnswer',
+                type: 'GET',
+                data: {
+                    category: category,
+                    subCat1: subCat1,
+                    subCat2: subCat2,
+                    question: question
+                },
+                success: function(response) {
+                    console.log("Answer loaded:", response);
+                    var answerHtml = "";
+                    if (response.answer) {
+                        answerHtml += '<p>' + response.answer + '</p>';
                     } else {
-                        displayMessage('Error: No answer found', 'bot');
+                        answerHtml += '<p>Error: No answer found for the selected question</p>';
                     }
-                })
-                .catch(error => {
-                    console.error('Error fetching answer:', error);
-                    displayMessage('Error: Failed to fetch answer', 'bot');
-                });
+                    answerHtml +=
+                        '<button id="back-to-questions" class="chat-btn" data-category="' + category +
+                        '" data-subcat1="' + subCat1 + '" data-subcat2="' + subCat2 +
+                        '">Back</button><button id="home" class="chat-btn">Home</button>';
+                    $('#chat').html(answerHtml);
+                }
+            });
         }
-
-
-        function displayMessage(message, sender) {
-            var chatDiv = document.getElementById('chat');
-            var messageDiv = document.createElement('div');
-            messageDiv.className = 'message';
-            messageDiv.innerHTML = '<strong>' + sender + ':</strong> ' + message;
-            chatDiv.appendChild(messageDiv);
-        }
-
-        // Display categories as buttons when the page loads
-        var data = {!! json_encode($data) !!};
-        Object.keys(data).forEach(category => {
-            var button = document.createElement('button');
-            button.innerText = category;
-            button.onclick = function() {
-                sendMessage(category);
-            };
-            document.getElementById('chat').appendChild(button);
-        });
     </script>
+
 </body>
 
 </html>
