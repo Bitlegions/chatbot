@@ -138,8 +138,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center;
-            padding: 10px 10px;
+
+            padding: 10px 20px;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             box-shadow: var(--primaryBoxShadow);
@@ -189,18 +189,34 @@
             width: 90%;
         }
 
+        #chat2 {
+            /* border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px; */
+            margin-top: 40px;
+            background: #E0E0E0;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            margin-bottom: 3%;
+            text-align: center;
+            font-weight: bolder;
+        }
+
         #chat-btn {
-            /* background: var(--primary); */
+            font-size: medium;
             background: var(--primary);
             color: white;
             padding: 10px;
             border-radius: 10px;
             margin: 5px;
             cursor: pointer;
-            width: 95%
+            width: 95%;
         }
 
         .chat-btn {
+            font-size: medium;
             background: var(--primary);
             color: white;
             padding: 10px;
@@ -314,7 +330,7 @@
             body {
                 font-family: 'Nunito', sans-serif;
                 font-weight: 100;
-                font-size: 100%;
+                font-size: 85%;
                 background: #F1F1F1;
             }
 
@@ -322,11 +338,16 @@
                 width: 90%;
             }
 
+            #chat2 {
+                font-weight: bold;
+            }
+
             #chat-btn {
                 padding: 10px;
                 border-radius: 10px;
                 margin: 2px;
-                width: 95%
+                width: 95%;
+                font-size: 110%;
             }
 
             .chatbox__support {
@@ -346,214 +367,16 @@
             .chatbox__description--header {
                 font-size: 0.7rem;
             }
+
+        }
+
+        #back-to-questions {
+            font-size: medium;
+            margin-top: 40px;
         }
     </style>
 
-    {{-- <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 400;
-            font-size: 100%;
-            background: #F1F1F1;
-        }
-
-        *,
-        html {
-            --primaryGradient: linear-gradient(93.12deg, #581B98 0.52%, #9C1DE7 100%);
-            --secondaryGradient: linear-gradient(268.91deg, #581B98 -2.14%, #9C1DE7 99.69%);
-            --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-            --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
-            --primary: #581B98;
-        }
-
-        .chatbox {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-        }
-
-        .chatbox__support {
-            display: flex;
-            flex-direction: column;
-            background: #f9f9f9;
-            width: 100%;
-            max-width: 450px;
-            height: 600px;
-            box-shadow: var(--primaryBoxShadow);
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            transition: all 0.5s ease-in-out;
-            transform: translateY(100%);
-            opacity: 0;
-        }
-
-        .chatbox--active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .chatbox__button {
-            text-align: right;
-        }
-
-        .send__button {
-            padding: 6px;
-            background: transparent;
-            border: none;
-            outline: none;
-            cursor: pointer;
-        }
-
-        /* HEADER */
-        .chatbox__header {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 10px;
-            background: var(--primaryGradient);
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            box-shadow: var(--primaryBoxShadow);
-        }
-
-        .chatbox__image--header {
-            margin-right: 10px;
-        }
-
-        .chatbox__heading--header {
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .chatbox__description--header {
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        /* MESSAGES */
-        .chatbox__messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: scroll;
-        }
-
-        .messages__item {
-            margin-top: 10px;
-            background: #E0E0E0;
-            padding: 8px 12px;
-            max-width: 70%;
-            border-radius: 20px;
-        }
-
-        .messages__item--visitor {
-            margin-right: auto;
-            border-bottom-left-radius: 0;
-        }
-
-        .messages__item--operator {
-            margin-left: auto;
-            background: var(--primary);
-            color: white;
-            border-bottom-right-radius: 0;
-        }
-
-        /* FOOTER */
-        .chatbox__footer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 10px;
-            background: var(--secondaryGradient);
-            box-shadow: var(--secondaryBoxShadow);
-            border-bottom-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
-
-        .chatbox__footer input {
-            width: 80%;
-            border: none;
-            padding: 10px 10px;
-            border-radius: 30px;
-            text-align: left;
-        }
-
-        .chatbox__send--footer {
-            color: white;
-        }
-
-        .chatbox__button button,
-        .chatbox__button button:focus,
-        .chatbox__button button:visited {
-            padding: 10px;
-            background: white;
-            border: none;
-            outline: none;
-            border-radius: 50px;
-            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        @media screen and (max-width: 768px) {
-            .chatbox {
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .chatbox__support {
-                width: 100%;
-                height: 80vh;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-
-            .chatbox__header,
-            .chatbox__footer {
-                flex-direction: column;
-                padding: 10px;
-            }
-
-            .chatbox__heading--header {
-                font-size: 1rem;
-            }
-
-            .chatbox__description--header {
-                font-size: 0.8rem;
-            }
-
-            .chatbox__footer input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .chatbox__support {
-                width: 100%;
-                height: 70vh;
-            }
-
-            .chatbox__header {
-                padding: 5px;
-            }
-
-            .chatbox__heading--header {
-                font-size: 0.9rem;
-            }
-
-            .chatbox__description--header {
-                font-size: 0.7rem;
-            }
-        }
-    </style> --}}
 </head>
 
 <body>
@@ -573,6 +396,7 @@
                 </div>
                 <div class="chatbox__messages">
                     <div id="chat"></div>
+                    <div id="chat2"></div>
                 </div>
                 <div class="chatbox__footer">
                     {{-- <input type="text" placeholder="Write a message...">
@@ -774,6 +598,8 @@
                     var categoriesHtml =
                         '@foreach ($categories as $category) <button class="category-btn" id="chat-btn" data-category="{{ $category->Category }}">{{ $category->Category }}</button> @endforeach';
                     $('#chat').html(categoriesHtml);
+                    var text = '<p style="color:black;">Please select a category</p>';
+                    $('#chat2').html(text);
                 }
             });
         }
@@ -796,6 +622,8 @@
                     });
                     subCat1Html += '<button id="back-to-categories" class="chat-btn">Back</button>';
                     $('#chat').html(subCat1Html);
+                    var text = '<p style="color:black;">You select ' + category + ' </p>';
+                    $('#chat2').html(text);
                 }
             });
         }
@@ -822,6 +650,8 @@
                         category +
                         '">Back</button>';
                     $('#chat').html(subCat2Html);
+                    var text = '<p style="color:black;">You select ' + subCat1 + ' </p>';
+                    $('#chat2').html(text);
                 }
             });
         }
@@ -851,6 +681,8 @@
                         category +
                         '" data-subcat1="' + subCat1 + '">Back</button>';
                     $('#chat').html(questionsHtml);
+                    var text = '<p style="color:black;">You select ' + subCat2 + ' </p>';
+                    $('#chat2').html(text);
                 }
             });
         }
@@ -870,7 +702,7 @@
                     console.log("Answer loaded:", response);
                     var answerHtml = "";
                     if (response.answer) {
-                        answerHtml += '<p style="color:black;">' + response.answer + '</p>';
+                        answerHtml += '<p style="color:black; font-size:large;">' + response.answer + '</p>';
                     } else {
                         answerHtml += '<p>Error: No answer found for the selected question</p>';
                     }
@@ -879,6 +711,8 @@
                         '" data-subcat1="' + subCat1 + '" data-subcat2="' + subCat2 +
                         '">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(answerHtml);
+                    var text = '<p style="color:black;">You select ' + question + ' </p>';
+                    $('#chat2').html(text);
                 }
             });
         }
