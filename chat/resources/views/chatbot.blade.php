@@ -6879,14 +6879,12 @@
         $(document).ready(function() {
             $('body').on('click', '.category-btn', function() {
                 var category = $(this).data('category');
-                console.log("Category clicked:", category);
                 loadSubCat1(category);
             });
 
             $('body').on('click', '.subCat1-btn', function() {
                 var category = $(this).data('category');
                 var subCat1 = $(this).data('subcat1');
-                console.log("SubCat1 clicked:", category, subCat1);
                 loadSubCat2(category, subCat1);
             });
 
@@ -6894,7 +6892,6 @@
                 var category = $(this).data('category');
                 var subCat1 = $(this).data('subcat1');
                 var subCat2 = $(this).data('subcat2');
-                console.log("SubCat2 clicked:", category, subCat1, subCat2);
                 loadQuestions(category, subCat1, subCat2);
             });
 
@@ -6903,26 +6900,22 @@
                 var subCat1 = $(this).data('subcat1');
                 var subCat2 = $(this).data('subcat2');
                 var question = $(this).data('question');
-                console.log("Question clicked:", category, subCat1, subCat2, question);
                 getAnswer(category, subCat1, subCat2, question);
             });
 
             // Back button handlers
             $('body').on('click', '#back-to-categories', function() {
-                console.log("Back to categories clicked");
                 loadCategories();
             });
 
             $('body').on('click', '#back-to-subCat1', function() {
                 var category = $(this).data('category');
-                console.log("Back to SubCat1 clicked:", category);
                 loadSubCat1(category);
             });
 
             $('body').on('click', '#back-to-subCat2', function() {
                 var category = $(this).data('category');
                 var subCat1 = $(this).data('subcat1');
-                console.log("Back to SubCat2 clicked:", category, subCat1);
                 loadSubCat2(category, subCat1);
             });
 
@@ -6930,12 +6923,10 @@
                 var category = $(this).data('category');
                 var subCat1 = $(this).data('subcat1');
                 var subCat2 = $(this).data('subcat2');
-                console.log("Back to questions clicked:", category, subCat1, subCat2);
                 loadQuestions(category, subCat1, subCat2);
             });
 
             $('body').on('click', '#home', function() {
-                console.log("Home clicked");
                 loadCategories();
             });
 
@@ -6948,7 +6939,6 @@
                 url: '/',
                 type: 'GET',
                 success: function(response) {
-                    console.log("Categories loaded:", response);
                     var categoriesHtml =
                         '@foreach ($categories as $category) <button class="category-btn" id="chat-btn" data-category="{{ $category->Category }}">{{ $category->Category }}</button> @endforeach';
                     $('#chat').html(categoriesHtml);
@@ -6966,7 +6956,6 @@
         }
 
         function loadSubCat1(category) {
-            console.log("Loading subCat1 for:", category);
             $.ajax({
                 url: '/getSubCat1Options',
                 type: 'GET',
@@ -6974,7 +6963,6 @@
                     category: category
                 },
                 success: function(response) {
-                    console.log("SubCat1 options loaded:", response);
                     var subCat1Html = "";
                     response.options.forEach(function(option) {
                         subCat1Html += '<button class="subCat1-btn" id="chat-btn" data-category="' +
@@ -6996,7 +6984,6 @@
         }
 
         function loadSubCat2(category, subCat1) {
-            console.log("Loading subCat2 for:", category, subCat1);
             $.ajax({
                 url: '/getSubCat2Options',
                 type: 'GET',
@@ -7005,7 +6992,6 @@
                     subCat1: subCat1
                 },
                 success: function(response) {
-                    console.log("SubCat2 options loaded:", response);
                     var subCat2Html = "";
                     response.options.forEach(function(option) {
                         subCat2Html += '<button class="subCat2-btn" id="chat-btn" data-category="' +
@@ -7029,7 +7015,6 @@
         }
 
         function loadQuestions(category, subCat1, subCat2) {
-            console.log("Loading questions for:", category, subCat1, subCat2);
             $.ajax({
                 url: '/getQuestions',
                 type: 'GET',
@@ -7039,7 +7024,6 @@
                     subCat2: subCat2
                 },
                 success: function(response) {
-                    console.log("Questions loaded:", response);
                     var questionsHtml = "";
                     response.questions.forEach(function(question) {
                         questionsHtml += '<button class="question-btn" id="chat-btn" data-category="' +
@@ -7065,7 +7049,6 @@
         }
 
         function getAnswer(category, subCat1, subCat2, question) {
-            console.log("Getting answer for:", category, subCat1, subCat2, question);
             $.ajax({
                 url: '/getAnswer',
                 type: 'GET',
@@ -7076,7 +7059,6 @@
                     question: question
                 },
                 success: function(response) {
-                    console.log("Answer loaded:", response);
                     var answerHtml = "";
                     if (response.answer) {
                         answerHtml +=
