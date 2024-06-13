@@ -6746,7 +6746,7 @@
                     </div>
                     <div class="chatbox__content--header">
                         <h4 class="chatbox__heading--header">ACPC Chatbot</h4>
-                        <p class="chatbox__description--header">Hi,How can I help you?</p>
+                        <p class="chatbox__description--header">Hi, How can I help you?</p>
                     </div>
                 </div>
                 <div class="chatbox__messages">
