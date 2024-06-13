@@ -1,0 +1,4 @@
+app/Http/controllers/ChatbotController
+routes/web.php - 5 routes
+resources/views/chatbot.blade.php
+
