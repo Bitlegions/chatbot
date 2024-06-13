@@ -604,7 +604,7 @@
 
         function loadCategories() {
             $.ajax({
-                url: '/chatbot',
+                url: '/',
                 type: 'GET',
                 success: function(response) {
                     console.log("Categories loaded:", response);
