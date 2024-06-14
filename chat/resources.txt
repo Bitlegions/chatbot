@@ -29,6 +29,7 @@
 
 - public/css/chatbot.css
 - public/js/chatbot.js
+- public/fonts/adminfont.css
 
 *** .env ***
 
