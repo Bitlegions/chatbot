@@ -19,3 +19,10 @@
 - routes/web.php - all routes
 
 
+*** bootstrap and jquery ***
+
+- public/bootstrap/bootstrap.min.css
+- public/bootstrap/bootstrap.min.js
+- public/jquery/jquery.min.js
+
+
