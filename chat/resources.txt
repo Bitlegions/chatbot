@@ -25,6 +25,10 @@
 - public/bootstrap/bootstrap.min.js
 - public/jquery/jquery.min.js
 
+*** css and js ***
+
+- public/css/chatbot.css
+- public/js/chatbot.js
 
 *** .env ***
 
