@@ -720,7 +720,7 @@
                 },
                 success: function(response) {
                     if (response.answer) {
-                        var processedAnswer = makeLinksClickable();
+                        var answerHtml = "";
                         answerHtml +=
                             '<p style="color:black; margin-bottom: 20px; margin-top: 10px; font-weight: bolder;">' +
                             response.answer + '</p>';
