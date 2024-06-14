@@ -1,4 +1,21 @@
-app/Http/controllers/ChatbotController
-routes/web.php - 5 routes
-resources/views/chatbot.blade.php
+*** Controllers ***
+
+- app/Http/controllers/ChatbotController
+- app/Http/controllers/AuthController
+- app/Http/controllers/AdminController
+
+
+*** Views ***
+
+- resources/views/chatbot.blade.php
+- resources/views/login.blade.php
+- resources/views/chatbot.blade.php
+- resources/views/chatBotAdmin.blade.php
+- resources/views/app.blade.php
+
+
+*** Routes ***
+
+- routes/web.php - all routes
+
 

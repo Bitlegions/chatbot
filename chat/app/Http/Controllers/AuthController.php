@@ -13,7 +13,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('admin');
+            return redirect()->intended('chatBotAdmin');
         }
 
         return back()->withErrors([

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
     <div class="container1">
@@ -266,7 +266,7 @@
                 e.preventDefault();
                 const formData = new FormData(modalForm);
                 const id = document.getElementById('question-id').value;
-                let url = id ? `/admin/update/${id}` : '/admin/store';
+                let url = id ? `/chatBotAdmin/update/${id}` : '/chatBotAdmin/store';
                 let method = 'POST';
 
                 fetch(url, {
@@ -302,7 +302,7 @@
 
                 if (e.target.classList.contains('delete-btn')) {
                     const id = e.target.getAttribute('data-id');
-                    fetch(`/admin/delete/${id}`, {
+                    fetch(`/chatBotAdmin/delete/${id}`, {
                             method: 'DELETE',
                             headers: {
                                 'X-CSRF-TOKEN': '{{ csrf_token() }}'

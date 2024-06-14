@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
         $categories = DB::table('questions')->select('Category')->distinct()->get();
         $questions = DB::table('questions')->get();
-        return view('admin.index', compact('categories', 'questions'));
+        return view('chatBotAdmin', compact('categories', 'questions'));
     }
 
     public function filter(Request $request)

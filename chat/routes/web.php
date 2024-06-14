@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -24,11 +23,11 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protect the Admin Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::post('/admin/filter', [AdminController::class, 'filter'])->name('admin.filter');
-    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
-    Route::post('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/chatBotAdmin', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('/chatBotAdmin/filter', [AdminController::class, 'filter'])->name('admin.filter');
+    Route::post('/chatBotAdmin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::post('/chatBotAdmin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/chatBotAdmin/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('/questions/{id}', [AdminController::class, 'show'])->name('questions.show');
     Route::post('/getSubCat1Options', [AdminController::class, 'getSubCat1Options'])->name('getSubCat1Options');
     Route::post('/getSubCat2Options', [AdminController::class, 'getSubCat2Options'])->name('getSubCat2Options');
