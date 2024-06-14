@@ -93,7 +93,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="modal-answer">Answer</label>
-                                <input type="text" id="modal-answer" name="answer" class="form-control">
+                                <textarea id="modal-answer" rows="5" cols="50" name="answer" class="form-control"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
