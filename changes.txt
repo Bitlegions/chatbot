@@ -1,0 +1,11 @@
+remove:
+old resources/views/login.blade.php
+old routes/web.php
+old resources/views/chatbot.blade.php
+
+add:
+new resources/views/chatbotLogin.blade.php
+new routes/web.php
+new public/css/chatbot.css
+new public/fonts/adminfont.css
+new resources/views/chatbot.blade.php
