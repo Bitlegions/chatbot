@@ -98,6 +98,7 @@
             });
 
             $('body').on('click', '#home', function() {
+                $('#chat2').html('');
                 loadCategories();
             });
 
@@ -140,7 +141,7 @@
                             category +
                             '" data-subcat1="' + option.SubCat1 + '">' + option.SubCat1 + '</button>';
                     });
-                    subCat1Html += '<button id="back-to-categories" class="chat-btn">Back</button>';
+                    subCat1Html += '<button id="back-to-categories" class="chat-btn">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(subCat1Html);
 
 
@@ -172,7 +173,7 @@
                     });
                     subCat2Html += '<button id="back-to-subCat1" class="chat-btn" data-category="' +
                         category +
-                        '">Back</button>';
+                        '">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(subCat2Html);
 
                     const para = document.createElement("p");
@@ -206,7 +207,7 @@
                     });
                     questionsHtml += '<button id="back-to-subCat2" class="chat-btn" data-category="' +
                         category +
-                        '" data-subcat1="' + subCat1 + '">Back</button>';
+                        '" data-subcat1="' + subCat1 + '">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(questionsHtml);
 
                     const para = document.createElement("p");
@@ -253,9 +254,6 @@
                     para.appendChild(node);
                     $('#chat2').append(para);
 
-                    $(document).on('click', '#home', function() {
-                        $('#chat2').html('');
-                    });
                 }
             });
         }
