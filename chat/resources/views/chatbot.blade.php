@@ -11,6 +11,7 @@
 </head>
 
 <body>
+   
 
     <div class="container">
         <div class="chatbox">
@@ -114,9 +115,6 @@
                     var categoriesHtml =
                         '@foreach ($categories as $category) <button class="category-btn" id="chat-btn" data-category="{{ $category->Category }}">{{ $category->Category }}</button> @endforeach';
                     $('#chat').html(categoriesHtml);
-                    // var text = '<p style="color:black;">Please select a category</p>';
-                    // $('#chat2').append(text);
-
                     const para = document.createElement("p");
                     const node = document.createTextNode('Please select a category.');
                     para.style.cssText =
