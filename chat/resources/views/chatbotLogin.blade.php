@@ -83,7 +83,7 @@
 
 <body>
     <div class="login-container">
-        <form method="POST" action="{{ url('/login') }}" class="login-form">
+        <form method="POST" action="{{ url('/chatbotLogin') }}" class="login-form">
             @csrf
             <h2>Login</h2>
             <div class="input-group">

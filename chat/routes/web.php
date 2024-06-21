@@ -14,11 +14,11 @@ Route::get('/getQuestions', [ChatbotController::class, 'getQuestions']);
 Route::get('/getAnswer', [ChatbotController::class, 'getAnswer']);
 
 // Authentication Routes
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/chatbotLogin', function () {
+    return view('chatbotLogin');
+})->name('chatbotLogin');
+Route::post('/chatbotLogin', [AuthController::class, 'login']);
+Route::get('/chatbotLogout', [AuthController::class, 'logout'])->name('logout');
 
 
 // Protect the Admin Routes
