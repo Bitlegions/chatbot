@@ -5,19 +5,23 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     font-weight: 400;
     font-size: 100%;
-    background: #F1F1F1;
+    background: #f1f1f1;
 }
 
 *,
 html {
-    --primaryGradient: linear-gradient(93.12deg, #581B98 0.52%, #9C1DE7 100%);
-    --secondaryGradient: linear-gradient(268.91deg, #581B98 -2.14%, #9C1DE7 99.69%);
+    --primaryGradient: linear-gradient(93.12deg, #581b98 0.52%, #9c1de7 100%);
+    --secondaryGradient: linear-gradient(
+        268.91deg,
+        #581b98 -2.14%,
+        #9c1de7 99.69%
+    );
     --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
-    --primary: #581B98;
+    --primary: #581b98;
 }
 
 .chatbox {
@@ -35,7 +39,7 @@ html {
     height: 1050px;
     z-index: -123456;
     opacity: 0;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 /* CONTENT ISOPEN */
@@ -43,7 +47,6 @@ html {
     transform: translateY(-40px);
     z-index: 123456;
     opacity: 1;
-
 }
 
 /* BUTTON */
@@ -58,7 +61,6 @@ html {
     outline: none;
     cursor: pointer;
 }
-
 
 /* HEADER */
 .chatbox__header {
@@ -91,7 +93,7 @@ html {
     border-radius: 8px;
     border: 2px solid white;
     /* should match background, can't be transparent */
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .messages__item {
@@ -146,7 +148,7 @@ html {
 }
 
 .chatbox__description--header {
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: white;
 }
 
@@ -173,7 +175,7 @@ html {
     /* border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px; */
-    background: #E0E0E0;
+    background: #e0e0e0;
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -215,7 +217,7 @@ html {
     border-radius: 10px;
     margin: 5px;
     cursor: pointer;
-    width: 95%
+    width: 95%;
 }
 
 .messages__item--operator {
@@ -272,12 +274,11 @@ html {
 }
 
 @media screen and (max-width: 768px) {
-
     body {
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-weight: 300;
         font-size: 100%;
-        background: #F1F1F1;
+        background: #f1f1f1;
     }
 
     #chat {
@@ -288,7 +289,7 @@ html {
         padding: 10px;
         border-radius: 10px;
         margin: 2px;
-        width: 95%
+        width: 95%;
     }
 
     .chatbox {
@@ -298,7 +299,7 @@ html {
 
     .chatbox__support {
         width: 65vh;
-        height: 80vh;
+        height: 90vh;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
     }
@@ -325,10 +326,10 @@ html {
 
 @media screen and (max-width: 480px) {
     body {
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-weight: 100;
         font-size: 85%;
-        background: #F1F1F1;
+        background: #f1f1f1;
     }
 
     #chat {
@@ -372,9 +373,68 @@ html {
     .chatbox__description--header {
         font-size: 0.7rem;
     }
-
 }
+@media screen and (max-width: 320px) {
+    body {
+        font-family: "Nunito", sans-serif;
+        font-weight: 100;
+        font-size: 85%;
+        background: #f1f1f1;
+    }
 
+    #chat {
+        width: 70vw;
+        margin-left: 0vw;
+    }
+
+    #chat2 {
+        font-size: 85%;
+        margin-right: 0vw;
+    }
+
+    #chat-btn {
+        padding: 10px;
+        border-radius: 10px;
+        margin: 2px;
+        /* width: 95%; */
+        font-size: 85%;
+    }
+
+    .chatbox__support {
+        margin-left: 5vw;
+        width: 90vw;
+        height: 80vh;
+        padding: 0px;
+    }
+    .chatbox__messages {
+        padding: 0px;
+        padding-left: 10px;
+        margin-top: auto;
+        display: flex;
+        overflow-y: scroll;
+        flex-direction: column-reverse;
+    }
+
+    #back-to-categories,
+    #back-to-questions,
+    #back-to-subCat1,
+    #back-to-subCat2,
+    #home {
+        font-size: 85%;
+    }
+
+    .chatbox__header {
+        padding: 5px;
+    }
+
+    .chatbox__heading--header {
+        font-size: 0.9rem;
+    }
+
+    .chatbox__description--header {
+        font-size: 0.7rem;
+    }
+}
 /* #back-to-questions {
     font-size: 80%;
     margin-top: 40px;
