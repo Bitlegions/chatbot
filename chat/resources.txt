@@ -8,8 +8,7 @@
 *** Views ***
 
 - resources/views/chatbot.blade.php
-- resources/views/login.blade.php
-- resources/views/chatbot.blade.php
+- resources/views/chatbotLogin.blade.php
 - resources/views/chatBotAdmin.blade.php
 - resources/views/app.blade.php
 

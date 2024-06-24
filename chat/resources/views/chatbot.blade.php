@@ -11,7 +11,6 @@
 </head>
 
 <body>
-   
 
     <div class="container">
         <div class="chatbox">
@@ -103,7 +102,6 @@
                 loadCategories();
             });
 
-            // Load initial categories
             loadCategories();
         });
 
