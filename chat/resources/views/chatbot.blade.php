@@ -12,13 +12,13 @@
 
 <body>
 
+
     <div class="container">
         <div class="chatbox">
             <div class="chatbox__support">
                 <div class="chatbox__header">
                     <div class="chatbox__image--header">
-                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png"
-                            alt="image">
+                        <img src="{{ asset('circled-user-female.png') }}" alt="">
                     </div>
                     <div class="chatbox__content--header">
                         <h4 class="chatbox__heading--header">ACPC Chatbot</h4>
@@ -32,14 +32,27 @@
                 <div class="chatbox__footer">
                 </div>
             </div>
-            <div class="chatbox__button" style="cursor:pointer">
-                <svg id="svg" width="70" height="50"
-                    style="border: black 4px solid; border-radius: 100%; padding: 7px;" viewBox="0 0 36 29"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="chatbox__button" style="cursor:pointer;">
+               
+
+                <?xml version="1.0" encoding="utf-8"?>
+                <svg width="70" height="70" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                   
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M14.6522 2.71772C12.9188 2.22247 11.0814 2.22247 9.34802 2.71772L9.22162 2.75383C6.09319 3.64767 3.64777 6.09309 2.75393 9.22152C2.23256 11.0463 2.27471 12.9861 2.87486 14.7865L3.42237 16.4291C3.44651 16.5015 3.4495 16.5793 3.43098 16.6534L2.52996 20.2575C2.44476 20.5982 2.54461 20.9587 2.79299 21.2071C3.04137 21.4555 3.40186 21.5553 3.74264 21.4701L7.34674 20.5691C7.42079 20.5506 7.49859 20.5536 7.57101 20.5777L9.21355 21.1252C11.014 21.7254 12.9538 21.7675 14.7786 21.2462C17.907 20.3523 20.3524 17.9069 21.2463 14.7785L21.2824 14.6521C21.7776 12.9187 21.7776 11.0813 21.2824 9.34792C20.3661 6.14088 17.8592 3.63402 14.6522 2.71772ZM9.89746 4.64077C11.2717 4.24812 12.7285 4.24812 14.1027 4.64077C16.6454 5.36723 18.6329 7.35474 19.3593 9.89736C19.752 11.2716 19.752 12.7284 19.3593 14.1026L19.3232 14.229C18.6192 16.6931 16.6932 18.6191 14.2291 19.3231C12.7919 19.7338 11.2641 19.7006 9.84601 19.2279L8.98347 18.9404C7.89526 18.3048 7.20374 17.8211 6.71829 17.3855L6.71692 17.3843C6.68118 17.3522 6.64655 17.3204 6.61298 17.2888C6.56704 17.2456 6.52305 17.2028 6.48081 17.1602C5.98829 16.6644 5.73426 16.21 5.40919 15.6284C5.30367 15.4396 5.19066 15.2375 5.05957 15.0161L4.77222 14.1541C4.29953 12.736 4.26634 11.2082 4.67698 9.77096C5.38099 7.30695 7.30705 5.38089 9.77107 4.67688L9.89746 4.64077Z"
+                        fill="#152C70" />
                     <path
-                        d="M28.2857 10.5714C28.2857 4.88616 21.9576 0.285714 14.1429 0.285714C6.32813 0.285714 0 4.88616 0 10.5714C0 13.8259 2.08929 16.7388 5.34375 18.6272C4.66071 20.2946 3.77679 21.0781 2.9933 21.9621C2.77232 22.2232 2.51116 22.4643 2.59152 22.846C2.65179 23.1875 2.93304 23.4286 3.23438 23.4286C3.25446 23.4286 3.27455 23.4286 3.29464 23.4286C3.89732 23.3482 4.47991 23.2478 5.02232 23.1071C7.05134 22.5848 8.93973 21.721 10.6071 20.5357C11.7321 20.7366 12.9174 20.8571 14.1429 20.8571C21.9576 20.8571 28.2857 16.2567 28.2857 10.5714ZM36 15.7143C36 12.3594 33.7902 9.38616 30.3951 7.51786C30.6964 8.50223 30.8571 9.52679 30.8571 10.5714C30.8571 14.1674 29.0089 17.4821 25.654 19.933C22.5402 22.183 18.4621 23.4286 14.1429 23.4286C13.5603 23.4286 12.9576 23.3884 12.375 23.3482C14.8862 24.9955 18.221 26 21.8571 26C23.0826 26 24.2679 25.8795 25.3929 25.6786C27.0603 26.8638 28.9487 27.7277 30.9777 28.25C31.5201 28.3906 32.1027 28.4911 32.7054 28.5714C33.0268 28.6116 33.3281 28.3504 33.4085 27.9888C33.4888 27.6071 33.2277 27.3661 33.0067 27.1049C32.2232 26.221 31.3393 25.4375 30.6563 23.7701C33.9107 21.8817 36 18.9888 36 15.7143Z"
-                        fill="#581B98" />
+                        d="M7.5 13.5C8.32843 13.5 9 12.8284 9 12C9 11.1716 8.32843 10.5 7.5 10.5C6.67157 10.5 6 11.1716 6 12C6 12.8284 6.67157 13.5 7.5 13.5Z"
+                        fill="#9c1de7" />
+                    <path
+                        d="M13.5 12C13.5 12.8284 12.8284 13.5 12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12Z"
+                        fill="#9c1de7" />
+                    <path
+                        d="M16.5 13.5C17.3284 13.5 18 12.8284 18 12C18 11.1716 17.3284 10.5 16.5 10.5C15.6716 10.5 15 11.1716 15 12C15 12.8284 15.6716 13.5 16.5 13.5Z"
+                        fill="#9c1de7" />
+                    
                 </svg>
+
                 <script src="{{ asset('js/chatbot.js') }}"></script>
             </div>
 
@@ -137,7 +150,8 @@
                             category +
                             '" data-subcat1="' + option.SubCat1 + '">' + option.SubCat1 + '</button>';
                     });
-                    subCat1Html += '<button id="back-to-categories" class="chat-btn">Back</button><button id="home" class="chat-btn">Home</button>';
+                    subCat1Html +=
+                        '<button id="back-to-categories" class="chat-btn">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(subCat1Html);
 
 
@@ -203,7 +217,8 @@
                     });
                     questionsHtml += '<button id="back-to-subCat2" class="chat-btn" data-category="' +
                         category +
-                        '" data-subcat1="' + subCat1 + '">Back</button><button id="home" class="chat-btn">Home</button>';
+                        '" data-subcat1="' + subCat1 +
+                        '">Back</button><button id="home" class="chat-btn">Home</button>';
                     $('#chat').html(questionsHtml);
 
                     const para = document.createElement("p");
@@ -232,9 +247,6 @@
                         answerHtml +=
                             '<p style="color:black; margin-bottom: 20px; margin-top: 10px; font-weight: bolder; word-wrap: break-word;">' +
                             response.answer + '</p>';
-
-
-                        console.log(response.answer);
                     } else {
                         answerHtml += '<p>Error: No answer found for the selected question</p>';
                     }

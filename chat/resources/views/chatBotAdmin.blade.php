@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container1">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="header">
             <h1>Admin Panel</h1>
             <button class="btn btn-success" id="add-new-btn">Add New Question</button>
         </div>
@@ -34,14 +34,14 @@
             </div>
         </form>
 
-        <table class="table mt-4">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Category</th>
                     <th>Category 1</th>
                     <th>Category 2</th>
                     <th>Questions</th>
-                    <th>Answers</th>
+                    <th style="width: 100px">Answers</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,25 +52,23 @@
                         <td>{{ $question->SubCat1 }}</td>
                         <td>{{ $question->SubCat2 }}</td>
                         <td>{{ $question->Question }}</td>
-                        <td>{{ Str::limit($question->Answer, 50, '...') }}</td>
+                        <td style="width: 100px;">{{ $question->Answer }}</td>
                         <td class="action-btns">
-                            <button class="btn btn-sm btn-primary edit-btn" data-id="{{ $question->id }}">Edit</button>
-                            <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $question->id }}">Delete</button>
-                            <button class="btn btn-sm btn-info show-btn" data-id="{{ $question->id }}">Show</button>
+                            <button class="btn btn-primary edit-btn" data-id="{{ $question->id }}">Edit</button>
+                            <button class="btn btn-danger delete-btn" data-id="{{ $question->id }}">Delete</button>
+                            <button class="btn btn-info show-btn" data-id="{{ $question->id }}">Show</button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <div id="modal" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+        <div id="modal" class="modal">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Question Form</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <form id="modal-form">
@@ -102,14 +100,12 @@
             </div>
         </div>
 
-        <div id="show-modal" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+        <div id="show-modal" class="modal">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Question Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <p><strong>Category:</strong> <span id="show-category"></span></p>
@@ -126,7 +122,6 @@
 
 @section('scripts')
     <style>
-        /* Add CSS styles directly within the scripts section */
         .container {
             width: 100%;
             max-width: none;
@@ -138,25 +133,195 @@
             border-radius: 10px;
         }
 
-        .action-btns button {
-            margin-bottom: 5px;
-            width: 70%;
-            /* Add space between buttons */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         .filterButton {
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .action-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-btns .btn {
+            width: 70px;
+            margin-bottom: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-dialog {
-            /* Add your existing styles here */
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            width: 90%;
+            max-width: 500px;
+        }
 
-            /* Add shadow to the dialog box */
-            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            margin: 0;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .filterButton {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filterButton .btn {
+                width: 100%;
+            }
+
+            .table th,
+            .table td {
+                padding: 5px;
+            }
+
+            .action-btns .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .modal-dialog {
+                width: 100%;
+                max-width: none;
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                padding: 5px;
+                font-size: 0.9rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 5px;
+                font-size: 0.8rem;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
+            }
+
+            .close {
+                font-size: 1.2rem;
+            }
         }
     </style>
     <script>
@@ -167,7 +332,7 @@
             const modal = document.getElementById('modal');
             const modalForm = document.getElementById('modal-form');
             const showModal = document.getElementById('show-modal');
-            const closeModal = document.querySelector('.close');
+            const closeModal = document.querySelector('.modal .close');
 
             document.querySelector('#show-modal .close').addEventListener('click', function() {
                 showModal.style.display = 'none';
@@ -188,19 +353,19 @@
                         questionsTable.innerHTML = '';
                         data.questions.forEach(question => {
                             questionsTable.innerHTML += `
-                        <tr>
-                            <td>${question.Category}</td>
-                            <td>${question.SubCat1}</td>
-                            <td>${question.SubCat2}</td>
-                            <td>${question.Question}</td>
-                            <td>${question.Answer.length > 50 ? question.Answer.substr(0, 50) + '...' : question.Answer}</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary edit-btn" data-id="${question.id}">Edit</button>
-                                <button class="btn btn-sm btn-danger delete-btn" data-id="${question.id}">Delete</button>
-                                <button class="btn btn-sm btn-info show-btn" data-id="${question.id}">Show</button>
-                            </td>
-                        </tr>
-                    `;
+                                <tr>
+                                    <td>${question.Category}</td>
+                                    <td>${question.SubCat1}</td>
+                                    <td>${question.SubCat2}</td>
+                                    <td>${question.Question}</td>
+                                    <td>${question.Answer}</td>
+                                    <td class='action-btns'>
+                                        <button class="btn btn-primary edit-btn" data-id="${question.id}">Edit</button>
+                                        <button class="btn btn-danger delete-btn" data-id="${question.id}">Delete</button>
+                                        <button class="btn btn-info show-btn" data-id="${question.id}">Show</button>
+                                    </td>
+                                </tr>
+                            `;
                         });
                     });
             });
@@ -254,7 +419,7 @@
             });
 
             addNewBtn.addEventListener('click', function() {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
                 modalForm.reset();
             });
 
@@ -296,7 +461,7 @@
                             document.getElementById('modal-subCat2').value = data.SubCat2;
                             document.getElementById('modal-question').value = data.Question;
                             document.getElementById('modal-answer').value = data.Answer;
-                            modal.style.display = 'block';
+                            modal.style.display = 'flex';
                         });
                 }
 
@@ -325,7 +490,7 @@
                             document.getElementById('show-subCat2').innerText = data.SubCat2;
                             document.getElementById('show-question').innerText = data.Question;
                             document.getElementById('show-answer').innerText = data.Answer;
-                            showModal.style.display = 'block';
+                            showModal.style.display = 'flex';
                         });
                 }
             });
