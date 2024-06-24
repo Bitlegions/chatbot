@@ -41,7 +41,7 @@
                     <th>Category 1</th>
                     <th>Category 2</th>
                     <th>Questions</th>
-                    <th>Answers</th>
+                    <th style="width: 100px">Answers</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,7 +52,7 @@
                         <td>{{ $question->SubCat1 }}</td>
                         <td>{{ $question->SubCat2 }}</td>
                         <td>{{ $question->Question }}</td>
-                        <td>{{ Str::limit($question->Answer, 50, '...') }}</td>
+                        <td style="width: 100px;">{{ $question->Answer }}</td>
                         <td class="action-btns">
                             <button class="btn btn-sm btn-primary edit-btn" data-id="{{ $question->id }}">Edit</button>
                             <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $question->id }}">Delete</button>
@@ -193,8 +193,8 @@
                             <td>${question.SubCat1}</td>
                             <td>${question.SubCat2}</td>
                             <td>${question.Question}</td>
-                            <td>${question.Answer.length > 50 ? question.Answer.substr(0, 50) + '...' : question.Answer}</td>
-                            <td>
+                            <td>${question.Answer}</td>
+                            <td class='action-btns'>
                                 <button class="btn btn-sm btn-primary edit-btn" data-id="${question.id}">Edit</button>
                                 <button class="btn btn-sm btn-danger delete-btn" data-id="${question.id}">Delete</button>
                                 <button class="btn btn-sm btn-info show-btn" data-id="${question.id}">Show</button>
