@@ -1,11 +1,21 @@
 remove:
-old resources/views/login.blade.php
-old routes/web.php
-old resources/views/chatbot.blade.php
+
+resources/views/login.blade.php
 
 add:
-new resources/views/chatbotLogin.blade.php
-new routes/web.php
-new public/css/chatbot.css
-new public/fonts/adminfont.css
-new resources/views/chatbot.blade.php
+
+public/css
+public/fonts
+public/js
+resources/views/chatbotLogin.blade.php
+public/circled-user-female.png
+
+
+Changed File:
+
+app/Http/Middleware/Authenticate.php
+resources/views/app.blade.php
+resources/views/chatbot.blade.php
+resources/views/chatBotAdmin.blade.php
+resources/views/welcome.blade.php
+routes/web.php
