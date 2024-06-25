@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container1">
+    <div>
         <div class="header">
             <h1>Admin Panel</h1>
             <button class="btn btn-success" id="add-new-btn">Add New Question</button>
@@ -34,14 +34,14 @@
             </div>
         </form>
 
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th>Category</th>
                     <th>Category 1</th>
                     <th>Category 2</th>
                     <th>Questions</th>
-                    <th style="width: 100px">Answers</th>
+                    <th>Answers</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,7 +52,7 @@
                         <td>{{ $question->SubCat1 }}</td>
                         <td>{{ $question->SubCat2 }}</td>
                         <td>{{ $question->Question }}</td>
-                        <td style="width: 100px;">{{ $question->Answer }}</td>
+                        <td>{{ $question->Answer }}</td>
                         <td class="action-btns">
                             <button class="btn btn-primary edit-btn" data-id="{{ $question->id }}">Edit</button>
                             <button class="btn btn-danger delete-btn" data-id="{{ $question->id }}">Delete</button>
@@ -187,15 +187,13 @@
             margin-bottom: 30px;
         }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
+        table {
             margin-top: 20px;
         }
 
-        .table th,
-        .table td {
-            padding: 10px;
+        th,
+        td {
+            /* padding: 10px; */
             border: 1px solid #ccc;
             text-align: left;
         }
@@ -254,75 +252,75 @@
             padding: 0;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-            }
+        /* @media (max-width: 768px) {
+                                                                                                                .header {
+                                                                                                                    flex-direction: column;
+                                                                                                                }
 
-            .btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
+                                                                                                                .btn {
+                                                                                                                    width: 100%;
+                                                                                                                    margin-bottom: 10px;
+                                                                                                                }
 
-            .filterButton {
-                flex-direction: column;
-                align-items: stretch;
-            }
+                                                                                                                .filterButton {
+                                                                                                                    flex-direction: column;
+                                                                                                                    align-items: stretch;
+                                                                                                                }
 
-            .filterButton .btn {
-                width: 100%;
-            }
+                                                                                                                .filterButton .btn {
+                                                                                                                    width: 100%;
+                                                                                                                }
 
-            .table th,
-            .table td {
-                padding: 5px;
-            }
+                                                                                                                .table th,
+                                                                                                                .table td {
+                                                                                                                    padding: 5px;
+                                                                                                                }
 
-            .action-btns .btn {
-                width: 100%;
-                margin-bottom: 5px;
-            }
+                                                                                                                .action-btns .btn {
+                                                                                                                    width: 100%;
+                                                                                                                    margin-bottom: 5px;
+                                                                                                                }
 
-            .modal-dialog {
-                width: 100%;
-                max-width: none;
-                margin: 20px;
-            }
-        }
+                                                                                                                .modal-dialog {
+                                                                                                                    width: 100%;
+                                                                                                                    max-width: none;
+                                                                                                                    margin: 20px;
+                                                                                                                }
+                                                                                                            } */
+        /*
+                                                                                                            @media (max-width: 576px) {
+                                                                                                                .header h1 {
+                                                                                                                    font-size: 1.5rem;
+                                                                                                                }
 
-        @media (max-width: 576px) {
-            .header h1 {
-                font-size: 1.5rem;
-            }
+                                                                                                                .form-group label {
+                                                                                                                    font-size: 0.9rem;
+                                                                                                                }
 
-            .form-group label {
-                font-size: 0.9rem;
-            }
+                                                                                                                .form-control {
+                                                                                                                    padding: 5px;
+                                                                                                                    font-size: 0.9rem;
+                                                                                                                }
 
-            .form-control {
-                padding: 5px;
-                font-size: 0.9rem;
-            }
+                                                                                                                .table th,
+                                                                                                                .table td {
+                                                                                                                    padding: 5px;
+                                                                                                                    font-size: 0.8rem;
+                                                                                                                }
 
-            .table th,
-            .table td {
-                padding: 5px;
-                font-size: 0.8rem;
-            }
+                                                                                                                .modal-header {
+                                                                                                                    flex-direction: column;
+                                                                                                                    align-items: flex-start;
+                                                                                                                }
 
-            .modal-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+                                                                                                                .modal-title {
+                                                                                                                    font-size: 1.2rem;
+                                                                                                                }
 
-            .modal-title {
-                font-size: 1.2rem;
-            }
-
-            .close {
-                font-size: 1.2rem;
-            }
-        }
+                                                                                                                .close {
+                                                                                                                    font-size: 1.2rem;
+                                                                                                                }
+                                                                                                            } */
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
