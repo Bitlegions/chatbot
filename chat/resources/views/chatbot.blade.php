@@ -15,7 +15,7 @@
         <div class="chatbox__support">
             <div class="chatbox__header">
                 <div class="chatbox__image--header">
-                    <img width="70" height="70" viewBox="0 0 24 24" src="{{ asset('AskAlly-png.png') }}"
+                    <img width="70" height="70" viewBox="0 0 24 24" src="{{ asset('AskAlly-jpg.jpg') }}"
                         alt="" style="border: 4px solid black; border-radius: 50%;">
 
                 </div>
