@@ -16,7 +16,7 @@
             <div class="chatbox__header">
                 <div class="chatbox__image--header">
                     <img width="70" height="70" viewBox="0 0 24 24" src="{{ asset('AskAlly-jpg.jpg') }}"
-                        alt="" style="border: 4px solid black; border-radius: 50%;">
+                        alt="" style=" border-radius: 50%;">
 
                 </div>
                 <div class="chatbox__content--header">
@@ -32,8 +32,7 @@
             </div>
         </div>
         <div class="chatbox__button" style="cursor:pointer;">
-            <img width="100" height="100" viewBox="0 0 24 24" src="{{ asset('AskAlly-gif.gif') }}" alt=""
-                style="border: 4px solid black; border-radius: 50%;">
+            <img width="100" height="100" viewBox="0 0 24 24" src="{{ asset('AskAlly-gif.gif') }}" alt="">
             <script src="{{ asset('js/chatbot.js') }}"></script>
         </div>
 
