@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
 
-    <!-- Fonts -->
+    {{-- <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('fonts/adminfont.css') }}">
 
     <!-- Styles -->
@@ -62,11 +62,11 @@
         .m-b-md {
             margin-bottom: 30px;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+    {{-- <div class="flex-center position-ref full-height">
         @if (Route::has('chatbotLogin'))
             <div class="top-right links">
                 @auth
@@ -97,7 +97,7 @@
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>
